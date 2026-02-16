@@ -1,8 +1,9 @@
 {
   "name": "myidp-django-devcontainer",
-  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "image": "mcr.microsoft.com/devcontainers/python:3.13",
   "features": {
-    "ghcr.io/va-h/devcontainers-features/uv:1": {}
+    "ghcr.io/va-h/devcontainers-features/uv:1": {},
+    "ghcr.io/devcontainers/features/terraform:1": {}
   },
   "runArgs": [
     "--name=myidp-django-devcontainer",
