@@ -1,0 +1,52 @@
+{
+  "name": "myidp-django-devcontainer",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/va-h/devcontainers-features/uv:1": {}
+  },
+  "runArgs": [
+    "--name=myidp-django-devcontainer",
+    "--label=com.docker.compose.project=local-apps",
+    "--network=local-apps",
+    "--add-host=postgresql.local:host-gateway"
+  ],
+  "mounts": [
+    "type=volume,target=${containerWorkspaceFolder}/.venv",
+    "type=bind,source=${localWorkspaceFolder}/.devcontainer/.env,target=${containerWorkspaceFolder}/.env",
+    "type=bind,source=${localWorkspaceFolder}/.devcontainer/bundle.crt,target=${containerWorkspaceFolder}/../bundle.crt"
+  ],
+  "postCreateCommand": "sudo chown -R $(whoami) .venv && uv sync",
+  "portsAttributes": {
+    "8000": {
+      "label": "MyIDP Django APP"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "streetsidesoftware.code-spell-checker",
+        "tamasfe.even-better-toml",
+        "github.copilot",
+        "github.copilot-chat",
+        "michelemelluso.gitignore",
+        "hashicorp.terraform",
+        "chrisdias.promptboost",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "batisteo.vscode-django",
+        "wholroyd.jinja",
+        "njpwernqer.autodocstring",
+        "ms-toolsai.jupyter",
+        "editorconfig.editorconfig",
+        "christian-kohler.path-intellisense",
+        "charliermarsh.ruff",
+        "bruno-api-client.bruno"
+      ]
+    }
+  }
+}
